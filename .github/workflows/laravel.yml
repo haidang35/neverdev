@@ -13,8 +13,8 @@ jobs:
     - name: Executing remote command
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        server: ${{ secrets.host}}
-        username: ${{ secrets.username}}
+        server: ftp.neverdev.com
+        username: nguyenhaidangyq@neverdev.com
         password: ${{ secrets.password}}
         server-dir: public_html/
         protocol: ftps
