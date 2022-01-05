@@ -1,0 +1,42 @@
+.flag-icon {
+    height: 17px;
+    border-radius: 2px;
+}
+
+.language-link {
+    display: flex;
+    align-items: center;
+}
+
+.language-name {
+    padding-left: 6px;
+}
+
+.language-choose {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+@media screen and (max-width: 1150px) {
+    .nav-wrap .nav-item .language-choose {
+        display: flex;
+    }
+}
+
+.loading-icon {
+    font-size: 27px;
+    padding: 0.5rem 3rem;
+}
+
+#message-success-subscribe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 21px;
+}
+
+#message-success-subscribe i {
+    margin-right: 1rem;
+    font-size: 30px;
+}
