@@ -50,27 +50,27 @@
     }
     </script>
     <meta name="description"
-        content="Inros is a modern classic blog theme for Ghost. Use this theme for company blog, magazine, niche or personal blog." />
-    <link rel="canonical" href="index.html" />
+        content="Neverdev is blog for developer" />
+    <link rel="canonical" href="{{ url()->current() }}" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
     <link rel="next" href="#" />
     <link rel="shortcut icon" href="{{ asset('assets/theme/images/logo/neverdev_logo.png') }}">
-    <meta property="og:site_name" content="Inros" />
+    <meta property="og:site_name" content="Neverdev" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Inros" />
+    <meta property="og:title" content="Neverdev" />
     <meta property="og:description"
-        content="Inros is a modern classic blog theme for Ghost. Use this theme for company blog, magazine, niche or personal blog." />
-    <meta property="og:url" content="https://inros.gbjsolution.com/" />
+        content="Neverdev is blog for developer" />
+    <meta property="og:url" content="https://neverdev.com/" />
     <meta property="og:image"
-        content="https://inros.gbjsolution.com/content/images/2021/09/fakurian-design-jyYAQaUDjzI-unsplash.jpg" />
-    <meta property="article:publisher" content="https://www.facebook.com/gbjsolution" />
+        content="#" />
+    <meta property="article:publisher" content="https://www.facebook.com/haidang.jinner" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Inros" />
+    <meta name="twitter:title" content="Neverdev" />
     <meta name="twitter:description"
-        content="Inros is a modern classic blog theme for Ghost. Use this theme for company blog, magazine, niche or personal blog." />
-    <meta name="twitter:url" content="https://inros.gbjsolution.com/" />
+        content="Neverdev is blog for developer" />
+    <meta name="twitter:url" content="https://neverdev.com/" />
     <meta name="twitter:image"
-        content="https://inros.gbjsolution.com/content/images/2021/09/fakurian-design-jyYAQaUDjzI-unsplash.jpg" />
+        content="#" />
     <meta name="twitter:site" content="@gbjsolution" />
     <meta property="og:image:width" content="1920" />
     <meta property="og:image:height" content="1152" />
@@ -81,30 +81,30 @@
     "@type": "WebSite",
     "publisher": {
         "@type": "Organization",
-        "name": "Inros",
-        "url": "https://inros.gbjsolution.com/",
+        "name": "Neverdev",
+        "url": "https://neverdev.com/",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://inros.gbjsolution.com/content/images/2021/09/light-theme-logo.svg"
+            "url": "https://neverdev.com/assets/theme/images/logo/neverdev_dark_logo.png"
         }
     },
-    "url": "https://inros.gbjsolution.com/",
+    "url": "https://neverdev.com/",
     "image": {
         "@type": "ImageObject",
-        "url": "https://inros.gbjsolution.com/content/images/2021/09/fakurian-design-jyYAQaUDjzI-unsplash.jpg",
+        "url": "https://neverdev.com/assets/theme/images/logo/neverdev_dark_logo.png",
         "width": 1920,
         "height": 1152
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://inros.gbjsolution.com/"
+        "@id": "https://neverdev.com/"
     },
-    "description": "Inros is a modern classic blog theme for Ghost. Use this theme for company blog, magazine, niche or personal blog."
+    "description": "Neverdev is blog for developer"
 }
     </script>
 
-    <meta name="generator" content="Ghost 4.32" />
-    <link rel="alternate" type="application/rss+xml" title="Inros" href="rss/index.html" />
+    <meta name="generator" content="Neverdev" />
+    <link rel="alternate" type="application/rss+xml" title="Neverdev" href="https://neverdev.com/" />
     <style id="gh-members-styles">
         .gh-post-upgrade-cta-content,
         .gh-post-upgrade-cta {
