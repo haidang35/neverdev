@@ -1,21 +1,20 @@
-name: Build and deploy
+name: Publish Website to CPanel
 on:
   push:
-    branches: [main]
-  workflow_dispatch:
-
+    branches:
+      - main
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2.1.0
+      with:
+        fetch-depth: 2
+    - name: FTP-Deploy-Action
+      uses: SamKirkland/FTP-Deploy-Action@3.1.1
+      with:
+        ftp-server: ftp.neverdev.com
+        ftp-username: dangjinner@neverdev.com
+        ftp-password: ${{ secrets.password }}
 
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.2.0
-      with: 
-          server: ftp.neverdev.com
-          username: dangjinner@neverdev.com
-          password: ${{ secrets.password }}
-        
