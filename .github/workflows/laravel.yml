@@ -14,7 +14,7 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.2.0
       with:
-        ftp-server: ftp.neverdev.com
-        ftp-username: dangjinner@neverdev.com
-        ftp-password: ${{ secrets.password }}
+        server: ftp.neverdev.com
+        username: dangjinner@neverdev.com
+        password: ${{ secrets.password }}
 
