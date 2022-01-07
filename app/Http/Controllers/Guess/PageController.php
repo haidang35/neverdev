@@ -38,5 +38,12 @@ class PageController extends Controller
         return view('themes.default.pages.blog.details', compact('blog', 'newerBlog', 'olderBlog', 'relatedBlogs'));
     }
 
+    public function generateSiteMap() 
+    {
+        $posts = Blog::all();
+        return response()->view('themes.default.pages.sitemap.index', [
+            'posts' => $posts
+        ])->header('Content-Type', 'text/xml');
+    }
 
 }

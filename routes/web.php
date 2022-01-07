@@ -28,6 +28,10 @@ Route::get('/change-language/{languague}', [HomeController::class, 'changeLangua
 Route::get('/tags', [PageController::class, 'tags'])->name('page.tags');
 Route::get('/tags/{slug}', [PageController::class, 'tagBlogs'])->name('page.tag');
 Route::get('/contact', [PageController::class, 'contact'])->name('page.contact');
-Route::get('/{slug}', [PageController::class, 'pageCustom'])->name('page.custom');
 Route::post('/subscribe -news', [HomeController::class, 'subscribeNews'])->name('subscribe.news');
 Route::post('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/sitemap.xml', [PageController::class, 'generateSiteMap'])->name('sitemap');
+
+//Customize Pages - Last Line
+Route::get('/{slug}', [PageController::class, 'pageCustom'])->name('page.custom');
+
