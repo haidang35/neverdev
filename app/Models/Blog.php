@@ -20,7 +20,8 @@ class Blog extends Model
 
     public function getThumbnail()
     {
-        return  new URL('/').$this->thumbnail ?? '';
+        $base_url = URL::to('/');
+        return  $base_url.$this->thumbnail ?? '';
     }
 
     public function translations() 
