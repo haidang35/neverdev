@@ -20,7 +20,7 @@ class Blog extends Model
 
     public function getThumbnail()
     {
-        return  URL($this->thumbnail ?? '');
+        return  new URL('/').$this->thumbnail ?? '';
     }
 
     public function translations() 
