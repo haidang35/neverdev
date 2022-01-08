@@ -12,7 +12,7 @@ class Topic extends Model
     use HasFactory;
     protected $table = 'topics';
     protected $fillable = [
-        'parent_id', 'slug', 'name', 'desc', 'thumbnail', 'meta_title', 'meta_desc', 'meta_key'
+        'parent_id', 'slug', 'name', 'desc', 'thumbnail', 'meta_title', 'meta_desc', 'meta_key', 'border_color'
     ];
 
     protected static function boot()

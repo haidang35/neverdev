@@ -2,7 +2,11 @@
 
 namespace App\Exceptions;
 
+use GuzzleHttp\Exception\ServerException;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Mockery\Exception\InvalidOrderException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -35,7 +39,24 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            //
+        
+        });
+
+        $this->renderable(function (NotFoundHttpException $e, $request) {
+            return response()->view('errors.404', [], 404);
+        });
+
+        $this->renderable(function (ServerException $e, $request) {
+            return response()->view('errors.500', [], 500);
+        });
+
+        $this->renderable(function (QueryException $e, $request) {
+            return response()->view('errors.500', [], 500);
         });
     }
+
+    
+    
+
+
 }

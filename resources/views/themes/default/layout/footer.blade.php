@@ -7,14 +7,14 @@
                         <div class="widget-content">
                             <div class="footer-logo-wrap">
                                 <a href="index.html" class="logo-img theme-light-logo">
-                                    <img src="{{ asset('assets/theme/images/logo/neverdev_light_logo.png') }}" alt="Inros">
+                                    <img src="{{ asset('assets/theme/images/logo/neverdev_light_logo.png') }}" alt="Jinner">
                                 </a>
                                 <a href="index.html" class="logo-img theme-dark-logo">
-                                    <img src="{{ asset('assets/theme/images/logo/neverdev_dark_logo.png') }}" alt="Inros">
+                                    <img src="{{ asset('assets/theme/images/logo/neverdev_dark_logo.png') }}" alt="Jinner">
                                 </a>
                             </div>
                             <div class="site-description">
-                               Dang Jinner
+                               Blog for all developers. 
                             </div>
                             <div class="social-links-wrap flex">
                                 <div class="social-links flex">

@@ -14,6 +14,9 @@ class HomeController extends Controller
     public function index() 
     {
         $newestBlog = Blog::with('topic')->latest()->first();
+        if($newestBlog == null) {
+            return abort(500);
+        }
         $rightSideBlogs = Blog::with('topic')->latest()->whereNotIn('id', [$newestBlog->id])->take(5)->get();
         $rightSideBlogIds = Blog::with('topic')->latest()->whereNotIn('id', [$newestBlog->id])->take(5)->pluck('id')->toArray();
         $rightSideBlogIds[] = $newestBlog->id;

@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
         DB::table('topics')->truncate();
         DB::table('blogs')->truncate();
         DB::table('blog_translations')->truncate();
-        \App\Models\User::factory(10)->create();
-        Topic::factory(20)->create();
-        Blog::factory(100)->create();
-        BlogTranslation::factory(1000)->create();
+        // \App\Models\User::factory(10)->create();
+        // Topic::factory(20)->create();
+        // Blog::factory(100)->create();
+        // BlogTranslation::factory(1000)->create();
     }
 }

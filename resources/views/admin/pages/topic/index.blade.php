@@ -93,7 +93,7 @@
 @endsection
 @push('scripts')
 <script>
-    var button1 = document.getElementById( 'uploadThumbnail' );
+    var button1 = document.getElementById( 'uploadTopicThumbnail' );
     button1.onclick = function(e) {
         e.preventDefault();
         selectFileWithCKFinder( 'ckfinder-input-1' );
@@ -106,12 +106,10 @@
             onInit: function( finder ) {
                 finder.on( 'files:choose', function( evt ) {
                     var file = evt.data.files.first();
-                    var output = document.getElementById( elementId );
-                    // output.value = file.getUrl();
-                    const outputImg = document.getElementById('thumbnailUploadFinder');
+                    const outputImg = document.getElementById('previewTopicThumbnail');
                     outputImg.setAttribute('src', file.getUrl());
                     const thumbnailUrl = new URL(file.getUrl());
-                    document.getElementById('thumbnailUrl').setAttribute('value', thumbnailUrl.pathname);
+                    document.getElementById('topicThumbnailUrl').setAttribute('value', thumbnailUrl.pathname);
                 } );
 
                 finder.on( 'file:choose:resizedImage', function( evt ) {

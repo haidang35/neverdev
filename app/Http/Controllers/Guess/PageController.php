@@ -32,9 +32,12 @@ class PageController extends Controller
         $blog = Blog::with('topic')->whereHas('translations', function($query) use($slug) {
             return $query->whereSlug($slug);
         })->first();
+        if($blog == null) {
+            return abort(404); 
+        }
         $newerBlog = Blog::with('topic')->find($blog->id + 1);
         $olderBlog = Blog::with('topic')->find($blog->id - 1);
-        $relatedBlogs = Blog::with('topic')->whereTopicId($blog->topic_id)->latest()->take(4)->get();
+        $relatedBlogs = Blog::with('topic')->whereNotIn('id', [$blog->id])->whereTopicId($blog->topic_id)->latest()->take(4)->get();
         return view('themes.default.pages.blog.details', compact('blog', 'newerBlog', 'olderBlog', 'relatedBlogs'));
     }
 

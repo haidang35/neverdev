@@ -13,7 +13,6 @@
     <link rel="preconnect" href="index.html">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link href="{{ asset('assets/theme/assets/css/screen.mineef9.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/theme/assets/css/customize.css') }}" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <script>
         if(typeof(Storage) !== 'undefined') {
@@ -54,7 +53,7 @@
     <link rel="canonical" href="{{ url()->current() }}" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
     <link rel="next" href="#" />
-    <link rel="shortcut icon" href="{{ asset('assets/theme/images/logo/neverdev_logo.png') }}">
+    <link rel="shortcut icon" href="{{ asset('images/logo/neverdev_favicon.png') }}">
     <meta property="og:site_name" content="Neverdev" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Neverdev" />
@@ -99,7 +98,7 @@
         "@type": "WebPage",
         "@id": "https://neverdev.com/"
     },
-    "description": "Neverdev is blog for developer"
+    "description": "Neverdev is blog for developers"
 }
     </script>
 
@@ -188,6 +187,7 @@
             --ghost-accent-color: #0066FF;
         }
     </style>
+    <link href="{{ asset('assets/theme/assets/css/customize.css') }}" rel="stylesheet">
     @stack('styles')
 </head>
 

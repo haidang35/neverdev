@@ -2,10 +2,10 @@
     <div class="header-inner flex justify-space-between">
         <div class="header-logo flex">
             <a href="{{ route('home') }}" class="logo-img theme-light-logo">
-                <img src="{{ asset('assets/theme/images/logo/neverdev_light_logo.png') }}" alt="Inros">
+                <img src="{{ asset('assets/theme/images/logo/neverdev_light_logo.png') }}" alt="Neverdev">
             </a>
             <a href="{{ route('home') }}" class="logo-img theme-dark-logo">
-                <img src="{{ asset('assets/theme/images/logo/neverdev_dark_logo.png') }}" alt="Inros">
+                <img src="{{ asset('assets/theme/images/logo/neverdev_dark_logo.png') }}" alt="Neverdev">
             </a>
         </div>
 
@@ -69,7 +69,7 @@
                     <a class="nav-link" href="signin/index.html">Sign in</a>
                 </li> --}}
                 <li class="nav-item" role="menuitem">
-                    <a class="btn btn-sm" href="#">Contact</a>
+                    <a class="btn btn-sm" href="{{ route('page.contact') }}">Contact</a>
                 </li>
             </ul>
             <div class="icons-wrap">

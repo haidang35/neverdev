@@ -41,16 +41,16 @@
                             <div class="row">
                                 <div class="col-md-12 mt-2">
                                     <label for="thumbnailUrl" class="form-label">Thumbnail</label> <br>
-                                    <input type="text" class="form-control" id="thumbnailUrl" hidden
+                                    <input type="text" class="form-control" id="topicThumbnailUrl" hidden
                                         name="thumbnail" value="">
                                     <div class="thumnail-upload-box">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <a href="#" id="uploadThumbnail" class="btn btn-info">Upload</a>
+                                                <a href="#" id="uploadTopicThumbnail" class="btn btn-info">Upload</a>
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="thumbnail-upload">
-                                                    <img src="" id="thumbnailUploadFinder" />
+                                                    <img src="" id="previewTopicThumbnail" />
                                                 </div>
                                             </div>
                                         </div>
@@ -73,13 +73,13 @@
                                         </div>
                                     </div>
                                 </div>
+                               
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <label for="meta-desc" class="form-label">Meta Description</label>
-                                        <textarea name="meta_desc" class="form-control" id="meta-desc" required>
-                                                </textarea>
+                                        <textarea name="meta_desc" class="form-control" id="meta-desc" required></textarea>
                                         <div class="valid-feedback">
                                             Looks good!
                                         </div>
@@ -99,6 +99,13 @@
                                         <div class="invalid-feedback">
                                             Meta keywords cannot be empty
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="border-color" class="form-label">Border Color</label>
+                                        <input type="color" name="border_color" class="form-control" id="border-color"
+                                            placeholder="Border Color" value="" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">

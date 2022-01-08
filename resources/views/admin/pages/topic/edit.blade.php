@@ -101,16 +101,11 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                                        <label class="form-check-label" for="invalidCheck">
-                                            Agree to terms and conditions
-                                        </label>
-                                        <div class="invalid-feedback">
-                                            You must agree before submitting.
-                                        </div>
+                                    <div class="mb-3">
+                                        <label for="border-color" class="form-label">Border Color</label>
+                                        <input type="color" name="border_color" class="form-control" id="border-color"
+                                            placeholder="Border Color" value="{{ $topic->border_color }}" required>
                                     </div>
-                
                                 </div>
                             </div>
                         </div>
