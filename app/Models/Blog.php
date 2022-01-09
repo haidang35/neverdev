@@ -65,5 +65,10 @@ class Blog extends Model
     {
         return $this->status == 1;
     }
+
+    public function scopePublishStatus($query)
+    {
+        return $query->where('status', 1);
+    }
     
 }

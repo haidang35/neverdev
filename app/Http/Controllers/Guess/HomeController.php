@@ -29,14 +29,14 @@ class HomeController extends Controller
         SEOTools::twitter()->setSite('@neverdev');
         SEOTools::jsonLd()->addImage(URL::to('/assets/theme/images/logo/NEVERDEV_dark_logo.png'));
 
-        $newestBlog = Blog::with('topic')->latest()->first();
+        $newestBlog = Blog::with('topic')->publishStatus()->latest()->first();
         if($newestBlog == null) {
             return abort(500);
         }
-        $rightSideBlogs = Blog::with('topic')->latest()->whereNotIn('id', [$newestBlog->id])->take(5)->get();
-        $rightSideBlogIds = Blog::with('topic')->latest()->whereNotIn('id', [$newestBlog->id])->take(5)->pluck('id')->toArray();
+        $rightSideBlogs = Blog::with('topic')->publishStatus()->latest()->whereNotIn('id', [$newestBlog->id])->take(5)->get();
+        $rightSideBlogIds = Blog::with('topic')->publishStatus()->latest()->whereNotIn('id', [$newestBlog->id])->take(5)->pluck('id')->toArray();
         $rightSideBlogIds[] = $newestBlog->id;
-        $belowSideBlogs = Blog::with('topic')->latest()->whereNotIn('id', $rightSideBlogIds)->take(9)->get();
+        $belowSideBlogs = Blog::with('topic')->publishStatus()->latest()->whereNotIn('id', $rightSideBlogIds)->take(9)->get();
         return view('themes.default.home.index', compact('newestBlog', 'rightSideBlogs', 'belowSideBlogs'));
     }
 
@@ -45,7 +45,7 @@ class HomeController extends Controller
         $newestBlog = Blog::with('topic')->latest()->first();
         $rightSideBlogIds = Blog::with('topic')->latest()->whereNotIn('id', [$newestBlog->id])->take(5)->pluck('id')->toArray();
         $rightSideBlogIds[] = $newestBlog->id;
-        $belowSideBlogs = Blog::with('topic')->latest()->whereNotIn('id', $rightSideBlogIds)->paginate(9);
+        $belowSideBlogs = Blog::with('topic')->publishStatus()->latest()->whereNotIn('id', $rightSideBlogIds)->paginate(9);
         foreach($belowSideBlogs as $blog) {
             $blog['translation'] = $blog->translation();
             $blog['author'] = $blog->translation()->author;
@@ -114,7 +114,7 @@ class HomeController extends Controller
     public function searchBlog(Request $request) 
     {
         $searchValue = $request->get('searchValue');
-        $blogs = Blog::searchAjax($searchValue)->take(3)->latest()->get();
+        $blogs = Blog::searchAjax($searchValue)->publishStatus()->take(3)->latest()->get();
         foreach($blogs as $blog) {
             $blog['translation'] = $blog->translation();
             $blog['thumbnailUrl'] = $blog->getThumbnail();

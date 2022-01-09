@@ -178,6 +178,8 @@
     const editor = CKEDITOR.replace('body', {
             filebrowserUploadUrl: "{{ route('admin.blog.ckeditor.upload', ['_token' => csrf_token() ])}}",
             filebrowserUploadMethod: 'form',
+            extraPlugins: 'codesnippet',
+	        codeSnippet_theme: 'monokai_sublime'
     });
     CKFinder.setupCKEditor( editor );
     // let myDropzone = new Dropzone("div#dropzone", { url: "{{ route('admin.blog.ckeditor.upload', ['_token' => csrf_token() ]) }}"});

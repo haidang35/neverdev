@@ -23,13 +23,17 @@ class PageController extends Controller
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::twitter()->setSite('@neverdev');
         SEOTools::jsonLd()->addImage(URL::to('/assets/theme/images/logo/neverdev_dark_logo.png'));
-        $tags = Topic::withCount('blog')->latest()->get();
+        $tags = Topic::withCount(['blog' => function($query) {
+            return $query->publishStatus();
+        }])->latest()->get();
         return view('themes.default.pages.tags.index', compact('tags'));
     }
 
     public function tagBlogs($slug)
     {
-        $tag = Topic::withCount('blog')->whereSlug($slug)->first();
+        $tag = Topic::withCount(['blog' => function($query) {
+            return $query->publishStatus();
+        }])->whereSlug($slug)->first();
         if($tag == null) {
             return abort(404);
         }
@@ -41,14 +45,14 @@ class PageController extends Controller
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::twitter()->setSite('@neverdev');
         SEOTools::jsonLd()->addImage(URL::to('/assets/theme/images/logo/neverdev_dark_logo.png'));
-        $blogs = $tag->blog()->paginate(6);
+        $blogs = $tag->blog()->publishStatus()->paginate(6);
         return view('themes.default.pages.tags.blogs', compact('tag', 'blogs'));
     }
 
     public function tagBlogsLoadMore($slug)
     {
         $tag = Topic::withCount('blog')->whereSlug($slug)->first();
-        $blogs = $tag->blog()->with('topic')->paginate(6);
+        $blogs = $tag->blog()->publishStatus()->with('topic')->paginate(6);
         foreach($blogs as $blog) {
             $blog['translation'] = $blog->translation();
             $blog['createdAtFormat'] = $blog->created_at->format('M d, Y');
@@ -87,15 +91,17 @@ class PageController extends Controller
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::twitter()->setSite('@neverdev');
         SEOTools::jsonLd()->addImage(URL::to('/').$blog->getThumbnail());
-        $newerBlog = Blog::with('topic')->find($blog->id + 1);
-        $olderBlog = Blog::with('topic')->find($blog->id - 1);
-        $relatedBlogs = Blog::with('topic')->whereNotIn('id', [$blog->id])->whereTopicId($blog->topic_id)->latest()->take(4)->get();
+        $newerBlogId = Blog::with('topic')->publishStatus()->where('id', '<', $blog->id)->max('id');
+        $newerBlog = Blog::with('topic')->find($newerBlogId);
+        $olderBlogId = Blog::with('topic')->publishStatus()->where('id', '>', $blog->id)->min('id');
+        $olderBlog = Blog::with('topic')->find($olderBlogId);
+        $relatedBlogs = Blog::with('topic')->publishStatus()->whereNotIn('id', [$blog->id])->whereTopicId($blog->topic_id)->latest()->take(4)->get();
         return view('themes.default.pages.blog.details', compact('blog', 'newerBlog', 'olderBlog', 'relatedBlogs'));
     }
 
     public function generateSiteMap() 
     {
-        $posts = Blog::all();
+        $posts = Blog::publishStatus()->get();
         return response()->view('themes.default.pages.sitemap.index', [
             'posts' => $posts
         ])->header('Content-Type', 'text/xml');
