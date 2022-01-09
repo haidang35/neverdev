@@ -77,7 +77,7 @@ class PageController extends Controller
 
     public function pageCustom($slug)
     {
-        $blog = Blog::with('topic')->whereHas('translations', function($query) use($slug) {
+        $blog = Blog::with('topic')->publishStatus()->whereHas('translations', function($query) use($slug) {
             return $query->whereSlug($slug);
         })->first();
         if($blog == null) {
