@@ -18,6 +18,7 @@ class CreateBlogTable extends Migration
             $table->boolean('status')->default(true);
             $table->string('thumbnail')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

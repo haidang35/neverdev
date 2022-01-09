@@ -46,13 +46,13 @@ class Handler extends ExceptionHandler
             return response()->view('errors.404', [], 404);
         });
 
-        $this->renderable(function (ServerException $e, $request) {
-            return response()->view('errors.500', [], 500);
-        });
+        // $this->renderable(function (ServerException $e, $request) {
+        //     return response()->view('errors.500', [], 500);
+        // });
 
-        $this->renderable(function (QueryException $e, $request) {
-            return response()->view('errors.500', [], 500);
-        });
+        // $this->renderable(function (QueryException $e, $request) {
+        //     return response()->view('errors.500', [], 500);
+        // });
     }
 
     

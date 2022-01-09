@@ -282,3 +282,34 @@ box.addEventListener('click', function(e) {
         });
     });
 </script>
+<script>
+    $(document).ready(function() {
+        $('#search-input-official').on('input', function() {
+            const value = $(this).val();
+            $.ajax({
+                type: "GET",
+                url: "{{ route('blogs.search') }}",
+                data: { searchValue: value },
+                success: function (response) {
+                    $('#search-results').html('');
+                   response.forEach((item) => {
+                    $('#search-results').append(
+                        `
+                        <div class="search-result-item">
+                            <a href="/${item.translation.slug}" class="search-result-item-box">
+                            <div class="result-item-thumbnail">
+                                    <img src="${item.thumbnailUrl}" alt="${item.translation.title}"/>
+                            </div>
+                            <div class="result-item-info">
+                                    <h5 class="title">${item.translation.title}</h5>
+                            </div>
+                            </a>
+                        </div>
+                        `
+                    );
+                   })
+                }
+            });
+        })
+    });
+</script>

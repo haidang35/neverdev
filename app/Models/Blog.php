@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
 use Symfony\Component\Translation\Command\TranslationTrait;
 
 class Blog extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $table = 'blogs';
     protected $fillable = [
-        'status', 'thumbnail', 'topic_id'
+        'status', 'thumbnail', 'topic_id', 'read_time'
     ];
 
     public function getThumbnail()
@@ -49,6 +50,20 @@ class Blog extends Model
             $translation = BlogTranslation::whereBlogId($this->id)->first();
         }
         return $translation;
+    }
+
+    public function scopeSearchAjax($query, $value)
+    {   
+        return $query->whereHas('translations', function($query) use($value) {
+            return $query->where('title', 'LIKE' ,'%'.$value.'%');
+        })->orWhereHas('topic', function($query) use($value) {
+            return $query->where('name', 'LIKE', '%'.$value.'%');
+        });
+    }
+
+    public function isPublished()
+    {
+        return $this->status == 1;
     }
     
 }

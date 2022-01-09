@@ -4,6 +4,7 @@
     <div class="container featured-post-layout-one">
         <div class="row">
             <div class="col-lg-12">
+                <h1 style="display: none">Neverdev - Learn and grow together</h1>
                 <h2 class="h4 section-title">Newest Blogs</h2>
             </div>
             <div class="col-xl-7 col-lg-6">
@@ -40,9 +41,8 @@
                                         }}</a>
                                 </div>
                                 <div class="date-time">
-                                    <time class="post-date" datetime="2021-05-02">{{ $newestBlog->created_at->format('F
-                                        j, Y') }}</time>
-                                    <span class="read-time">3 min read</span>
+                                    <time class="post-date" datetime="2021-05-02">{{ $newestBlog->created_at->format('M d, Y') }}</time>
+                                    <span class="read-time">{{ $blog->read_time ?? 3 }} min read</span>
                                 </div>
                             </div>
                         </div>

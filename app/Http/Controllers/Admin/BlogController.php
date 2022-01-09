@@ -33,6 +33,7 @@ class BlogController extends Controller
             'status' => $request->status,
             'thumbnail' => $request->thumbnail,
             'topic_id' => $request->topic_id,
+            'read_time' => $request->read_time,
         ]);
         BlogTranslation::create([
             'blog_id' => $blog->id,
@@ -64,6 +65,7 @@ class BlogController extends Controller
             'status' => $request->status,
             'thumbnail' => $request->thumbnail,
             'topic_id' => $request->topic_id,
+            'read_time' => $request->read_time,
         ]);
         $locale = Session::get('language', config('app.locale'));
         $dataUpdated = [
@@ -102,5 +104,26 @@ class BlogController extends Controller
             @header('Content-type: text/html; charset=utf-8'); 
             echo $response;
         }
+    }
+
+    public function changeStatus($id)
+    {
+        $blog = Blog::findOrFail($id);
+        $status = 1;
+        if($blog->status == 1) {
+            $status = 0;
+        }else {
+            $status = 1;
+        }
+        $blog->update([ 'status' => $status ]);
+        return back()->withSuccess('Update status for blog '.$blog->translation()->title. ' successful !');
+
+    }
+
+    public function delete($id)
+    {
+        $blog = Blog::findOrFail($id);
+        $blog->delete();
+        return back()->withSuccess('Blog has been deleted successful');
     }
 }

@@ -51,6 +51,10 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="widget secondary-nav flex">
+                        <div class="footer-right-box ">
+                            <img src="{{ asset('assets/theme/images/logo/neverdev_dark_logo.png') }}" class="footer-right-banner theme-dark-logo"/>
+                            <img src="{{ asset('assets/theme/images/logo/neverdev_light_logo.png') }}" class="footer-right-banner theme-light-logo"/>
+                        </div>
                     </div>
                 </div>
             </div>

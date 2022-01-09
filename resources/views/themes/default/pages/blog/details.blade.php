@@ -27,7 +27,7 @@
                                     <time class="post-date" datetime="{{ $blog->created_at->format('Y-m-d') }}">
                                         {{ $blog->created_at->format('M d, Y') }}
                                     </time>
-                                    <span class="read-time">3 min read</span>
+                                    <span class="read-time">{{ $blog->read_time ?? 3 }} min read</span>
                                 </div>
                             </div>
                         </div>

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>NEVERDEV</title>
+     {!! SEO::generate() !!}
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"
         rel="stylesheet">
@@ -48,32 +48,10 @@
         }
     }
     </script>
-    <meta name="description"
-        content="Neverdev is blog for developer" />
     <link rel="canonical" href="{{ url()->current() }}" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
     <link rel="next" href="#" />
     <link rel="shortcut icon" href="{{ asset('images/logo/neverdev_favicon.png') }}">
-    <meta property="og:site_name" content="Neverdev" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Neverdev" />
-    <meta property="og:description"
-        content="Neverdev is blog for developer" />
-    <meta property="og:url" content="https://neverdev.com/" />
-    <meta property="og:image"
-        content="#" />
-    <meta property="article:publisher" content="https://www.facebook.com/haidang.jinner" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Neverdev" />
-    <meta name="twitter:description"
-        content="Neverdev is blog for developer" />
-    <meta name="twitter:url" content="https://neverdev.com/" />
-    <meta name="twitter:image"
-        content="#" />
-    <meta name="twitter:site" content="@gbjsolution" />
-    <meta property="og:image:width" content="1920" />
-    <meta property="og:image:height" content="1152" />
-
     <script type="application/ld+json">
         {
     "@context": "https://schema.org",

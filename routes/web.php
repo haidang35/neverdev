@@ -27,10 +27,12 @@ Route::get('/admin/logout', [AuthController::class, 'signOut'])->name('auth.logo
 Route::get('/change-language/{languague}', [HomeController::class, 'changeLanguage'])->name('change-language');
 Route::get('/tags', [PageController::class, 'tags'])->name('page.tags');
 Route::get('/tags/{slug}', [PageController::class, 'tagBlogs'])->name('page.tag');
+Route::get('/tags/{slug}/load-more', [PageController::class, 'tagBlogsLoadMore'])->name('page.tag.load-more');
 Route::get('/contact', [PageController::class, 'contact'])->name('page.contact');
 Route::post('/subscribe -news', [HomeController::class, 'subscribeNews'])->name('subscribe.news');
 Route::post('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/sitemap.xml', [PageController::class, 'generateSiteMap'])->name('sitemap');
+Route::get('/blogs/search', [HomeController::class, 'searchBlog'])->name('blogs.search');
 
 //Customize Pages - Last Line
 Route::get('/{slug}', [PageController::class, 'pageCustom'])->name('page.custom');

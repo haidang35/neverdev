@@ -24,7 +24,9 @@ Route::middleware(['auth', 'admin', 'localization'])->prefix('admin')->name('adm
         Route::post('/store', [BlogController::class, 'store'])->name('store');
         Route::get('/{id}/edit', [BlogController::class, 'edit'])->name('edit');
         Route::post('/{id}/update', [BlogController::class, 'update'])->name('update');
+        Route::get('/{id}/delete', [BlogController::class, 'delete'])->name('delete');
         Route::post('/ckeditor/upload', [BlogController::class, 'ckeditorUpload'])->name('ckeditor.upload');
+        Route::get('/{id}/change-status', [BlogController::class, 'changeStatus'])->name('status.toggle');
     });
     Route::prefix('topic')->name('topic.')->group(function() {
         Route::get('/', [TopicController::class, 'index'])->name('index');

@@ -99,7 +99,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label class="form-label">Multiple Select</label>
+                                        <label class="form-label">Single Select</label>
                                         <select class="select2 form-control" name="topic_id"
                                             data-placeholder="Choose ...">
                                             @forelse($topics as $topic)
@@ -109,8 +109,16 @@
                                             @endforelse
                                         </select>
                                     </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Single Select</label>
+            
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label">Read Time</label><br>
+                                    <input type="text" name="read_time" class="form-control" id="read_time" value="{{ $blog->read_time }}" required/>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Read Time cannot be empty.
                                     </div>
                                 </div>
                                 <div class="col-md-12">

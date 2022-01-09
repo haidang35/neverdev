@@ -6,13 +6,29 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Contact;
 use App\Models\Subscriber;
+use App\Models\Topic;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\SEOTools;
+use Artesaos\SEOTools\Facades\TwitterCard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\URL;
 
 class HomeController extends Controller
 {
     public function index() 
     {
+        SEOTools::setTitle('NEVERDEV - Learn and grow together');
+        SEOTools::setDescription('Blog for all developer, learn and grow together. Never give up on your passion');
+        SEOMeta::addKeyword(['NEVERDEV', 'Learn and grow together', 'Developer', 'IT', 'Developer Blog', 'Dev', 'Blog Dev']);
+        SEOTools::opengraph()->setUrl(URL::to('/'));
+        SEOTools::setCanonical(URL::to('/'));
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@neverdev');
+        SEOTools::jsonLd()->addImage(URL::to('/assets/theme/images/logo/NEVERDEV_dark_logo.png'));
+
         $newestBlog = Blog::with('topic')->latest()->first();
         if($newestBlog == null) {
             return abort(500);
@@ -26,10 +42,6 @@ class HomeController extends Controller
 
     public function indexLoadMore(Request $request)
     {
-        $numberLoadMore = 9;
-        if($request->has('load_more')) {
-            $numberLoadMore = (int)$request->get('load_more');
-        }
         $newestBlog = Blog::with('topic')->latest()->first();
         $rightSideBlogIds = Blog::with('topic')->latest()->whereNotIn('id', [$newestBlog->id])->take(5)->pluck('id')->toArray();
         $rightSideBlogIds[] = $newestBlog->id;
@@ -76,6 +88,14 @@ class HomeController extends Controller
 
     public function contact(Request $request)
     {
+        SEOTools::setTitle('NEVERDEV - Learn and grow together');
+        SEOTools::setDescription('Blog for all developer, learn and grow together. Never give up on your passion');
+        SEOMeta::addKeyword(['NEVERDEV', 'Learn and grow together', 'Developer', 'IT', 'Developer Blog', 'Dev', 'Blog Dev']);
+        SEOTools::opengraph()->setUrl(URL::to('/'));
+        SEOTools::setCanonical(URL::to('/'));
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@neverdev');
+        SEOTools::jsonLd()->addImage(URL::to('/assets/theme/images/logo/NEVERDEV_dark_logo.png'));
         $request->validate([
             'full_name' => 'required | string',
             'email' => 'required | string | email',
@@ -89,5 +109,16 @@ class HomeController extends Controller
             'message' => $request->get('message'),
         ]);
         return response()->json('Success', 200);
+    }
+
+    public function searchBlog(Request $request) 
+    {
+        $searchValue = $request->get('searchValue');
+        $blogs = Blog::searchAjax($searchValue)->take(3)->latest()->get();
+        foreach($blogs as $blog) {
+            $blog['translation'] = $blog->translation();
+            $blog['thumbnailUrl'] = $blog->getThumbnail();
+        }
+        return response()->json($blogs, 200);
     }
 }

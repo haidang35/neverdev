@@ -44,3 +44,50 @@
 .header-logo .logo-img img {
     max-height: 47px;
 }
+
+.footer-logo-wrap .logo-img img {
+    max-height: 50px;
+}
+
+.footer-right-box {
+    width: 100%;
+    height: 148px;
+    border: 2px dashed rgb(255, 255, 255);
+    border-radius: 20px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.footer-right-box .footer-right-banner {
+    width: 50%;
+    ;
+}
+
+.search-result-item {
+    margin: 10px;
+}
+
+.search-result-item-box {
+    display: flex;
+
+}
+
+.result-item-thumbnail {
+    width: 20%;
+}
+
+.result-item-thumbnail img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.result-item-info {
+    margin-left: 1rem;
+}
+.result-item-info .title {
+    color: var(--c-text-main);
+    margin: 0;
+
+}

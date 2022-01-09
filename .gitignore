@@ -4,6 +4,7 @@
 /storage/*.key
 /vendor
 /public/userfiles
+/app/Exeptions/Handler.php
 .env
 .env.backup
 .phpunit.result.cache
