@@ -25,7 +25,6 @@
                 <li class="nav-item" role="menuitem">
                     <a href="{{ route('page.tags') }}" class="nav-link">Tags</a>
                 </li>
-                
                 <li class="nav-item" role="menuitem">
                     <a href="{{ route('page.contact') }}" class="nav-link">Contact</a>
                 </li>
