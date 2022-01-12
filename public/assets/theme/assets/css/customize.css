@@ -91,3 +91,11 @@
     margin: 0;
 
 }
+
+.post-excerpt *{
+    display: none;
+}
+
+.post-excerpt p {
+    display: block;
+}

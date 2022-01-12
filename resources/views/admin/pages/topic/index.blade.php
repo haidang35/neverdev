@@ -49,6 +49,7 @@
                                         <th>Thumnail</th>
                                         <th>Name</th>
                                         <th>Blogs</th>
+                                        <th></th>
                                         <th>Created At</th>
                                         <th></th>
                                     </tr>
@@ -63,11 +64,22 @@
                                         <td>{{ $topic->name }}</td>
                                         <td>{{ $topic->blog_count }}</td>
                                         <th>{{ $topic->created_at }}</th>
+                                        <th>
+                                            @if($topic->isPublished())
+                                                <a href="{{ route('admin.topic.update.status', [$topic->id]) }}" class="btn btn-success btn-sm" style="font-size: 20px">
+                                                    <i class="fas fa-toggle-on"></i>
+                                                </a>
+                                            @else 
+                                                <a href="{{ route('admin.topic.update.status', [$topic->id]) }}" class="btn btn-danger btn-sm" style="font-size: 20px">
+                                                    <i class="fas fa-toggle-off"></i>
+                                                </a>
+                                            @endif
+                                        </th>
                                         <th class="text-center">
                                             <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modelUpdateTopic{{ $topic->id }}">Edit</a>
                                             <a href="#" class="btn btn-danger">Delete</a>
+                                            @include('admin.pages.topic.edit')
                                         </th>
-                                        @include('admin.pages.topic.edit')
                                     </tr>
                                     @empty
                                     <tr>
@@ -115,6 +127,33 @@
                 finder.on( 'file:choose:resizedImage', function( evt ) {
                     var output = document.getElementById( elementId );
                     output.value = evt.data.resizedUrl;
+                } );
+            }
+        } );
+    }
+
+    $('.uploadEditTopicThumbnail').click(function(e) {
+        e.preventDefault();
+        console.log($(this).data('topic_id'));
+        const topicThumbnailId = $(this).data('topic_id');
+        editTopicThumbnail(topicThumbnailId);
+    });
+
+    function editTopicThumbnail( id ) {
+        CKFinder.modal( {
+            chooseFiles: true,
+            width: 800,
+            height: 600,
+            onInit: function( finder ) {
+                finder.on( 'files:choose', function( evt ) {
+                    var file = evt.data.files.first();
+                    const outputImg = document.getElementById(`previewTopicThumbnail${id}`);
+                    outputImg.setAttribute('src', file.getUrl());
+                    const thumbnailUrl = new URL(file.getUrl());
+                    document.getElementById(`topicThumbnailUrl${id}`).setAttribute('value', thumbnailUrl.pathname);
+                } );
+
+                finder.on( 'file:choose:resizedImage', function( evt ) {
                 } );
             }
         } );

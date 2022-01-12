@@ -18,6 +18,7 @@ class CreateTopicsTable extends Migration
             $table->integer('parent_id')->nullable();
             $table->string('name');
             $table->string('slug');
+            $table->boolean('status')->default(true);
             $table->string('thumbnail')->nullable();
             $table->string('border_color')->nullable();
             $table->string('desc');

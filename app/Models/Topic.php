@@ -12,17 +12,8 @@ class Topic extends Model
     use HasFactory;
     protected $table = 'topics';
     protected $fillable = [
-        'parent_id', 'slug', 'name', 'desc', 'thumbnail', 'meta_title', 'meta_desc', 'meta_key', 'border_color'
+        'parent_id', 'slug', 'name', 'desc', 'thumbnail', 'meta_title', 'meta_desc', 'meta_key', 'border_color', 'status'
     ];
-
-    protected static function boot()
-    {
-        parent::boot();
-        static::created(function ($topic) {
-            $topic->slug = $topic->generateSlug($topic->name);
-            $topic->save();
-        });
-    }
 
     private function generateSlug($name)
     {
@@ -42,11 +33,16 @@ class Topic extends Model
 
     public function getThumbnail()
     {
-        return URL($this->thumbnail ?? '/userfiles/images/coding_logo.png');
+        return URL::to('/').$this->thumbnail ?? 'userfiles/images/coding_logo.png';
     }
 
     public function blog()
     {
         return $this->hasMany(Blog::class);
+    }
+
+    public function isPublished()
+    {
+        return $this->status == 1;
     }
 }

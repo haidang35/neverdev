@@ -31,7 +31,8 @@ Route::middleware(['auth', 'admin', 'localization'])->prefix('admin')->name('adm
     Route::prefix('topic')->name('topic.')->group(function() {
         Route::get('/', [TopicController::class, 'index'])->name('index');
         Route::post('/store', [TopicController::class, 'store'])->name('store');       
-        Route::post('/{id}/update', [TopicController::class, 'update'])->name('update');       
+        Route::post('/{id}/update', [TopicController::class, 'update'])->name('update');
+        Route::get('/{id}/update-status', [TopicController::class, 'updateStatus'])->name('update.status');       
     });
     Route::get('change-language/{language}', [DashboardController::class, 'changeLanguage'])->name('change-language');
 });

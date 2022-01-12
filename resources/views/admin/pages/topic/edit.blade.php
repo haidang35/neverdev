@@ -41,16 +41,16 @@
                             <div class="row">
                                 <div class="col-md-12 mt-2">
                                     <label for="thumbnailUrl" class="form-label">Thumbnail</label> <br>
-                                    <input type="text" class="form-control" id="thumbnailUrl" hidden
+                                    <input type="text" class="form-control" id="topicThumbnailUrl{{ $topic->id }}" hidden
                                         name="thumbnail" value="{{ $topic->thumbnail }}">
                                     <div class="thumnail-upload-box">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <a href="#" id="uploadThumbnail" class="btn btn-info">Upload</a>
+                                                <a href="#" class="uploadEditTopicThumbnail" data-topic_id="{{ $topic->id }}" class="btn btn-info">Upload</a>
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="thumbnail-upload">
-                                                    <img src="{{ $topic->getThumbnail() }}" id="thumbnailUploadFinder" />
+                                                    <img src="{{ $topic->getThumbnail() }}" id="previewTopicThumbnail{{ $topic->id }}" />
                                                 </div>
                                             </div>
                                         </div>
@@ -114,7 +114,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" form="formCreateTopic" class="btn btn-primary">Update</button>
+                <button type="submit" form="modelUpdateTopic{{ $topic->id }}" class="btn btn-primary">Update</button>
             </div>
         </div>
     </div>

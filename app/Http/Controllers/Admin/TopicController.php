@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Topic\StoreTopicRequest;
 use App\Models\Topic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TopicController extends Controller
 {
@@ -19,7 +20,7 @@ class TopicController extends Controller
     {
         Topic::create([
             'name' => $request->name,
-            'slug' => $request->name,
+            'slug' => Str::slug($request->name),
             'desc' => $request->desc,
             'border_color' => $request->border_color,
             'thumbnail' => $request->thumbnail,
@@ -35,6 +36,7 @@ class TopicController extends Controller
         $topic = Topic::findOrFail($id);
         $topic->update([
             'name' => $request->name,
+            'slug' => Str::slug($request->name),
             'desc' => $request->desc,
             'thumbnail' => $request->thumbnail,
             'border_color' => $request->border_color,
@@ -43,5 +45,17 @@ class TopicController extends Controller
             'meta_key' => $request->meta_key,
         ]);
         return back()->withSuccess('Update topic successful');
+    }
+
+    public function updateStatus($id) {
+        $topic = Topic::findOrFail($id);
+        $status = 1;
+        if($topic->status == 1) {
+            $status = 0;
+        }else {
+            $status = 1;
+        }
+        $topic->update([ 'status' => $status ]);
+        return back()->withSuccess('Update status for topic '.$topic->name. ' successful !');
     }
 }
