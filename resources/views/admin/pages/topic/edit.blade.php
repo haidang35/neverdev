@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="formCreateTopic" class="needs-validation" novalidate action="{{ route('admin.topic.update', ['id' => $topic->id]) }}" method="POST">
+                <form id="formUpdateTopic{{ $topic->id }}" class="needs-validation" novalidate action="{{ route('admin.topic.update', ['id' => $topic->id]) }}" method="POST">
                    @csrf
                     <div class="row">
                         <div class="col-md-6">
@@ -114,7 +114,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" form="modelUpdateTopic{{ $topic->id }}" class="btn btn-primary">Update</button>
+                <button type="submit" form="formUpdateTopic{{ $topic->id }}" class="btn btn-primary">Update</button>
             </div>
         </div>
     </div>

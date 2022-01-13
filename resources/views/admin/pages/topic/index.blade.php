@@ -49,7 +49,7 @@
                                         <th>Thumnail</th>
                                         <th>Name</th>
                                         <th>Blogs</th>
-                                        <th></th>
+                                        <th>Status</th>
                                         <th>Created At</th>
                                         <th></th>
                                     </tr>
@@ -63,7 +63,6 @@
                                         </td>
                                         <td>{{ $topic->name }}</td>
                                         <td>{{ $topic->blog_count }}</td>
-                                        <th>{{ $topic->created_at }}</th>
                                         <th>
                                             @if($topic->isPublished())
                                                 <a href="{{ route('admin.topic.update.status', [$topic->id]) }}" class="btn btn-success btn-sm" style="font-size: 20px">
@@ -75,11 +74,12 @@
                                                 </a>
                                             @endif
                                         </th>
+                                        <th>{{ $topic->created_at }}</th>
                                         <th class="text-center">
                                             <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modelUpdateTopic{{ $topic->id }}">Edit</a>
                                             <a href="#" class="btn btn-danger">Delete</a>
-                                            @include('admin.pages.topic.edit')
                                         </th>
+                                        @include('admin.pages.topic.edit')
                                     </tr>
                                     @empty
                                     <tr>

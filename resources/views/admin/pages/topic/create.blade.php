@@ -110,12 +110,12 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                        <input class="form-check-input" name="status" type="checkbox" value="" id="invalidCheck" required>
                                         <label class="form-check-label" for="invalidCheck">
-                                            Agree to terms and conditions
+                                            Publish
                                         </label>
                                         <div class="invalid-feedback">
-                                            You must agree before submitting.
+                                            You must choose status.
                                         </div>
                                     </div>
                 
@@ -127,7 +127,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" form="formCreateTopic" class="btn btn-primary">Create</button>
+                <button type="submit" form="formCreateTopic" class="btn btn-primary">Send message</button>
             </div>
         </div>
     </div>
