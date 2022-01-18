@@ -246,13 +246,23 @@ box.addEventListener('click', function(e) {
 });
 });
 </script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W6X0FLPR3C"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W6X0FLPR3C');
+</script>
 <script type="text/javascript">
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    </script>
+</script>
 <script>
     $('document').ready(function() {
         $('form[name=subscribe_news]').submit(function(e) {

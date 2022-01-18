@@ -16,9 +16,9 @@
         <!-- App Css-->
         <link href="{{ asset('assets/admin/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/admin/assets/css/customize.css') }}" rel="stylesheet" type="text/css" />
-        {{-- <script src="//cdn.ckeditor.com/4.17.1/full/ckeditor.js"></script> --}}
-        <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
         <link href="{{ asset('assets/admin/assets/libs/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+        {{-- <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script> --}}
+        <script src="https://cdn.ckeditor.com/4.17.1/standard-all/ckeditor.js"></script>
         @stack('styles')
     </head>
 
