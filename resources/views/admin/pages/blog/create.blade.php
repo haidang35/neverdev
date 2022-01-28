@@ -45,9 +45,21 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label for="editor" class="form-label">Title</label>
+                                        <label for="editor" class="form-label">Body</label>
                                         <textarea name="body" class="form-control" id="editor" required
                                             rows="30"></textarea>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Content cannot be empty.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="description" class="form-label">Description</label>
+                                        <textarea name="desc" class="form-control" id="description" required rows="3"> </textarea>
                                         <div class="valid-feedback">
                                             Looks good!
                                         </div>
@@ -178,10 +190,6 @@
     const editor = CKEDITOR.replace('body', {
             filebrowserUploadUrl: "{{ route('admin.blog.ckeditor.upload', ['_token' => csrf_token() ])}}",
             filebrowserUploadMethod: 'form',
-            extraPlugins: 'codesnippet',
-            codeSnippet_theme: 'monokai_sublime',
-            height: 356,
-            removeButtons: 'PasteFromWord'
     });
     CKFinder.setupCKEditor( editor );
     // let myDropzone = new Dropzone("div#dropzone", { url: "{{ route('admin.blog.ckeditor.upload', ['_token' => csrf_token() ]) }}"});

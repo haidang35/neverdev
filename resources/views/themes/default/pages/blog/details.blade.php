@@ -1,4 +1,23 @@
 @extends('themes.default.layout')
+@push('styles')
+<style>
+    .post-excerpt * {
+        display: none;
+    }
+
+    .post-excerpt p {
+        display: block;
+    }
+
+    .post-content>* {
+        margin-bottom: 0;
+    }
+
+    .post-content>h2 {
+        margin-top: 3rem;
+    }
+</style>
+@endpush
 @section('content')
 <div class="main">
     <div class="container">

@@ -6,7 +6,60 @@
 
 <script src="{{ asset('assets/admin/assets/libs/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/theme/assets/js/app.bundle.mineef9.js?v=19c918e88e') }}"></script>
-<script src="{{ asset('assets/theme/assets/js/plugin/prism.js') }}"></script>
+<script src="{{ asset('js/ckeditor/plugins/prism/lib/prism/prism_patched.min.js') }}"></script>
+{{-- Add button copy to code snippet block --}}
+<script>
+    // get the list of all highlight code blocks
+    const highlights = document.querySelectorAll("div.post-content pre")
+
+    highlights.forEach(div => {
+    // create the copy button
+    const copy = document.createElement("button");
+    copy.innerHTML = '<i class="far fa-copy"></i> <span id="copiedText"><i class="fas fa-check"></i> Copied</span>';
+    copy.classList.add('btn-copy-snippet');
+    // add the event listener to each click
+    copy.addEventListener("click", handleCopyClick);
+    // append the copy button to each code block
+    div.append(copy);
+    });
+
+    const copyToClipboard = str => {
+    const el = document.createElement("textarea") // Create a <textarea> element
+    el.value = str // Set its value to the string that you want copied
+    el.setAttribute("readonly", "") // Make it readonly to be tamper-proof
+    el.style.position = "absolute"
+    el.style.left = "-9999px" // Move outside the screen to make it invisible
+    document.body.appendChild(el) // Append the <textarea> element to the HTML document
+    const selected =
+        document.getSelection().rangeCount > 0 // Check if there is any content selected previously
+        ? document.getSelection().getRangeAt(0) // Store selection if found
+        : false // Mark as false to know no selection existed before
+    el.select() // Select the <textarea> content
+    document.execCommand("copy") // Copy - only works as a result of a user action (e.g. click events)
+    document.body.removeChild(el) // Remove the <textarea> element
+    if (selected) {
+        // If a selection existed before copying
+        document.getSelection().removeAllRanges() // Unselect everything on the HTML document
+        document.getSelection().addRange(selected) // Restore the original selection
+    }
+}
+
+function handleCopyClick(evt) {
+
+  // get the children of the parent element
+  const { children } = evt.target.parentElement
+  // grab the first element (we append the copy button on afterwards, so the first will be the code element)
+  // destructure the innerText from the code block
+  const { innerText } = Array.from(children)[0]
+  // copy all of the code to the clipboard
+  copyToClipboard(innerText)
+  // alert to show it worked, but you can put any kind of tooltip/popup to notify it worked
+  $('#copiedText').show('fast');
+  setTimeout(() => {
+    $('#copiedText').hide('fast');
+  }, 3000);
+}
+</script>
 <style>
     .settings-panel {
         width: 240px;
@@ -120,6 +173,22 @@
         border-top: 1px solid var(--c-border-light);
         margin-top: 8px;
         padding-top: 8px;
+    }
+
+    div.highlight button {
+        color: #adb5bd;
+        box-sizing: border-box;
+        transition: 0.2s ease-out;
+        cursor: pointer;
+        user-select: none;
+        background: rgba(0, 0, 0, 0.15);
+        border: 1px solid rgba(0, 0, 0, 0);
+        padding: 5px 10px;
+        font-size: 0.8em;
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-radius: 0 0.15rem;
     }
 </style>
 <script>
@@ -250,7 +319,7 @@ box.addEventListener('click', function(e) {
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6X0FLPR3C"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1246277708750778"
-     crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}

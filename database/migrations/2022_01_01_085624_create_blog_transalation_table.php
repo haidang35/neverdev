@@ -19,6 +19,7 @@ class CreateBlogTransalationTable extends Migration
             $table->unsignedBigInteger('author_id');
             $table->unsignedBigInteger('blog_id');
             $table->string('title');
+            $table->text('description');
             $table->longText('body');
             $table->string('locale')->index();
             $table->unique(['blog_id', 'locale', 'slug']);

@@ -39,6 +39,7 @@ class BlogController extends Controller
             'blog_id' => $blog->id,
             'author_id' => Auth::id() ?? null,
             'title' => $request->title,
+            'description' => $request->desc,
             'slug' => Str::slug($request->title),
             'body' => $request->body,
             'locale' => Session::get('language', config('app.locale')),
@@ -70,6 +71,7 @@ class BlogController extends Controller
         $locale = Session::get('language', config('app.locale'));
         $dataUpdated = [
             'title' => $request->title,
+            'description' => $request->desc,
             'body' => $request->body,
             'slug' => Str::slug($request->title),
             'meta_title' => $request->meta_title ?? $request->title,

@@ -12,7 +12,7 @@ class BlogTranslation extends Model
     protected $table = 'blog_translations';
     protected $fillable = [
         'slug', 'author_id', 'blog_id', 'title', 'body', 'locale',
-        'meta_title', 'meta_desc', 'meta_key',
+        'meta_title', 'meta_desc', 'meta_key', 'description'
     ];
 
     protected static function boot()

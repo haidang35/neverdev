@@ -72,6 +72,19 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="description" class="form-label">Description</label>
+                                        <textarea name="desc" class="form-control" id="description" required
+                                            rows="3">{{ $blog->translation()->description }}</textarea>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Content cannot be empty.
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>Jinner Admin</title>
+        <title>ADMIN NEVERDEV</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('assets/admin/assets/images/favicon.ico') }}">
+        <link rel="shortcut icon" href="{{ asset('images/logo/neverdev_favicon.png') }}">
         <link href="{{ asset('assets/admin/assets/libs/dropzone/min/dropzone.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- Bootstrap Css -->
         <link href="{{ asset('assets/admin/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -17,8 +17,8 @@
         <link href="{{ asset('assets/admin/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/admin/assets/css/customize.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/admin/assets/libs/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
-        {{-- <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script> --}}
-        <script src="https://cdn.ckeditor.com/4.17.1/standard-all/ckeditor.js"></script>
+        <script src="{{ asset('js/ckeditor/ckeditor.js') }}"></script>
+        {{-- <script src="https://cdn.ckeditor.com/4.17.1/standard-all/ckeditor.js"></script> --}}
         @stack('styles')
     </head>
 

@@ -16,7 +16,9 @@
                     </a>
                     <div class="post-info-wrap">
                         <div class="tag-wrap">
-                            <a href="{{ URL( $newestBlog->translation()->slug ) }}" @if($newestBlog->topic->border_color !== null) style="border-color: {{ $newestBlog->topic->border_color }}" @endif 
+                            <a href="{{ route('page.tag', [$newestBlog->topic->slug]) }}" @if($newestBlog->topic->border_color
+                                !== null)
+                                style="--c-theme:{{ $newestBlog->topic->border_color }}" @endif
                                 >{{ $newestBlog->topic->name }}
                             </a>
                         </div>
@@ -24,7 +26,7 @@
                                 {{ $newestBlog->translation()->title }}</a>
                         </h2>
                         <div class="post-excerpt">
-                            {!! $newestBlog->translation()->body !!}
+                            {!! $newestBlog->translation()->description !!}
                         </div>
                         <div class="post-meta-wrap flex">
                             <div class="author-avatar-wrap">
@@ -41,7 +43,8 @@
                                         }}</a>
                                 </div>
                                 <div class="date-time">
-                                    <time class="post-date" datetime="2021-05-02">{{ $newestBlog->created_at->format('M d, Y') }}</time>
+                                    <time class="post-date" datetime="2021-05-02">{{ $newestBlog->created_at->format('M
+                                        d, Y') }}</time>
                                     <span class="read-time">{{ $blog->read_time ?? 3 }} min read</span>
                                 </div>
                             </div>
@@ -57,7 +60,11 @@
                     </a>
                     <div class="post-info-wrap">
                         <div class="tag-wrap">
-                            <a href="{{ URL($blog->topic->slug) }}">{{ $blog->topic->name }}</a>
+                            <a @if($newestBlog->topic->border_color !== null)
+                                style="--c-theme:{{ $newestBlog->topic->border_color }}" @endif
+                                href="{{ route('page.tag', [$blog->topic->slug]) }}">
+                                {{ $blog->topic->name }}
+                            </a>
                         </div>
                         <h2 class="h4 post-title"><a href="{{ $blog->translation()->slug }}">
                                 {{ $blog->translation()->title }}</a>
@@ -65,7 +72,7 @@
                     </div>
                 </article>
                 @empty
-                
+
                 @endforelse
             </div>
         </div>
@@ -86,13 +93,15 @@
                 </a>
                 <div class="post-info-wrap">
                     <div class="tag-wrap">
-                        <a href="{{ $blog->topic->slug }}">{{ $blog->topic->name }}</a>
+                        <a @if($newestBlog->topic->border_color !== null)
+                            style="--c-theme:{{ $newestBlog->topic->border_color }}" @endif 
+                            href="{{ route('page.tag', [$blog->topic->slug]) }}">{{ $blog->topic->name }}</a>
                     </div>
                     <h2 class="h3 post-title"><a href="{{ URL($blog->translation()->slug) }}">
                             {{ $blog->translation()->title }}</a>
                     </h2>
                     <div class="post-excerpt">
-                        {!! $blog->translation()->body !!}
+                        {!! $blog->translation()->description !!}
                     </div>
                     <div class="post-meta-wrap flex">
                         <div class="author-avatar-wrap">

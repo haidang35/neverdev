@@ -157,7 +157,7 @@
     <!--hide ad -->
     <style>
         iframe[sandbox] {
-            display: none;
+            /* display: none; */
         }
     </style>
     <style>
@@ -166,8 +166,6 @@
         }
     </style>
     <link href="{{ asset('assets/theme/assets/css/customize.css') }}" rel="stylesheet">
-    <link href="{{ asset('js/ckeditor/plugins/codesnippet/lib/highlight/styles/monokai_sublime.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js') }}"></script>
     @stack('styles')
 </head>
 
