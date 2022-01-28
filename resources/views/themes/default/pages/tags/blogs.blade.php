@@ -44,7 +44,7 @@
                         </a>
                     </h2>
                     <div class="post-excerpt">
-                        {!! $blog->translation()->body !!}
+                        {!! $blog->translation()->description !!}
                     </div>
                     <div class="post-meta-wrap flex">
                         <div class="author-avatar-wrap">
