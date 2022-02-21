@@ -145,7 +145,14 @@
             </div>
         </div>
     </div>
-    <div class="prev-nex-wrap">
+    <div class="container">
+        <div class="comment-wrap">
+            <div class="comment-container">
+                <div id="disqus_thread" class="disqus-comment-wrap"></div>
+            </div>
+        </div>
+    </div>
+    {{-- <div class="prev-nex-wrap">
         <div class="container">
             <div class="row">
                 @if($newerBlog !== null)
@@ -195,7 +202,7 @@
 
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="related-posts-wrap">
         <div class="container">
             <h3 class="section-title h5 text-center">You might also like</h3>
@@ -228,20 +235,25 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="comment-wrap">
-            <div class="comment-container">
-                <div class="comment-placeholder text-center">
-                    <span>Loading comments...</span>
-                </div>
-                <div id="disqus_thread" class="disqus-comment-wrap"></div>
-                <script>
-                    var disqus_shortname = "inros-ghost-theme";
-                var pageUrl = 'index.html';
-                var pageIdentifier = 'ghost-5dac4ef9fde4fe4312e190fa';
-                </script>
-            </div>
-        </div>
-    </div>
+   
 </div>
 @endsection
+@push('scripts')
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    var disqus_config = function () {
+        this.page.url = route('home');  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "{{ $blog->translation()->slug }}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://https-neverdev-com.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+        Disqus.</a></noscript>
+@endpush
